@@ -1,11 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import s from '../Todolist.module.css';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import {IconButton, TextField} from '@mui/material';
 
 type AddItemFormPropsType = {
-  addItem : (title:string) => void
+  addItem: (title: string) => void
 }
 
-export const AddItemForm = (props:AddItemFormPropsType) => {
+export const AddItemForm = (props: AddItemFormPropsType) => {
 
   const [title, setTitle] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -24,18 +25,28 @@ export const AddItemForm = (props:AddItemFormPropsType) => {
     }
   }
 
-  const onKeyUpHandler = (e:KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === 'Enter') {
-    props.addItem(title)
-    setTitle('')
+  const onKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      props.addItem(title)
+      setTitle('')
+    }
   }
-}
 
   return (
     <div>
-      <input value={title} type="text" onKeyUp={onKeyUpHandler} onChange={onChangeHandler} className={error ? s.error : ''}/>
-      <button onClick={addTasksHandler} >+</button>
-      {error && <div className={s.errorMessage}>{error}</div>}
+      <TextField error={!!error}
+                 label="Title todolist"
+                 id="fullWidth"
+                 value={title}
+                 type="text"
+                 onKeyUp={onKeyUpHandler}
+                 onChange={onChangeHandler}/>
+      {/*<input value={title} type="text" onKeyUp={onKeyUpHandler} onChange={onChangeHandler} className={error ? s.error : ''}/>*/}
+      <IconButton color="success" aria-label="add to shopping cart" onClick={addTasksHandler}>
+        <AddchartIcon fontSize="large"/>
+      </IconButton>
+      {/*<button onClick={addTasksHandler} >+</button>*/}
+      {/*{error && <div className={s.errorMessage}>{error}</div>}*/}
     </div>
   );
 };

@@ -1,9 +1,11 @@
-import React, {ChangeEvent, useState,KeyboardEvent} from 'react';
+import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
+import {TextField} from '@mui/material';
+import s from './EditableSpan.module.css'
 
 
 type EditableSpanPropsType = {
   title: string
-  changeTitle:(newTitle:string) => void
+  changeTitle: (newTitle: string) => void
 }
 
 export const EditableSpan = (props: EditableSpanPropsType) => {
@@ -15,7 +17,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     setEdit(!edit)
   }
 
-  const onKeyUpHandler = (e:KeyboardEvent<HTMLInputElement>) => {
+  const onKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       setEdit(!edit)
       props.changeTitle(title)
@@ -27,12 +29,17 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     props.changeTitle(title)
   }
 
-  const onChangeHandler =(e:ChangeEvent<HTMLInputElement>)=>{
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value)
   }
 
   return (edit
-      ? <input value={title} onChange={onChangeHandler} onKeyUp={onKeyUpHandler} onBlur={onBlurHandler} autoFocus />
-      : <span onDoubleClick={onDoubleClickHandler}>{props.title}</span>
+      ? <TextField label={'Change task'}
+                   variant="standard"
+                   size="small"
+                   value={title}
+                   onChange={onChangeHandler} onKeyUp={onKeyUpHandler} onBlur={onBlurHandler} autoFocus/>
+      : <span onDoubleClick={onDoubleClickHandler} className={s.taskTitle}>{props.title}</span>
   )
 }
+

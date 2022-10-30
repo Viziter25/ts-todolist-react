@@ -12,6 +12,22 @@
     list-style-type : none;
 }
 
+.button {
+    color: black;
+    font-weight: bold;
+    margin: 5px;
+}
+
 .activeFilter {
-   background-color: aquamarine;
+   background-color: #9bf1d1;
+    color: black;
+}
+
+.titleTasks {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.task {
+    padding-top: 10px;
 }
