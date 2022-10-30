@@ -1,0 +1,17 @@
+.error {
+    border: red 1px solid;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    display: flex;
+}
+
+.ul {
+    list-style-type : none;
+}
+
+.activeFilter {
+   background-color: aquamarine;
+}
