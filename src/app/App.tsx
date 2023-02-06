@@ -46,6 +46,7 @@ function App() {
   }
 
   return (
+
     <div className="App">
       <ErrorSnackbar/>
       <AppBar position="static">
@@ -53,21 +54,21 @@ function App() {
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Menu/>
           </IconButton>
-          <Typography variant="h6">
-            News
+          <Typography variant="h5">
+            Todolists
           </Typography>
           {isLoggedIn && <Button color="inherit" onClick={LogoutHandler}>Log out</Button>}
         </Toolbar>
         {status === 'loading' && <LinearProgress/>}
       </AppBar>
       <Container fixed>
-        <Routes >
-          <Route path={'/'} element={<TodolistsList/>}/>
-          <Route path={'/ts-todolist-react'} element={<TodolistsList/>}/>
-          <Route path={'/login'} element={<Login/>}/>
-          <Route path={'/404'} element={<h1 style={{textAlign: 'center'}}>404: PAGE NOT FOUND</h1>}/>
-          <Route path={'*'} element={<Navigate to={'/404'}/>}/>
-        </Routes>
+          <Routes >
+            <Route path={'/'} element={<TodolistsList/>}/>
+            <Route path={'/ts-todolist-react'} element={<TodolistsList/>}/>
+            <Route path={'/login'} element={<Login/>}/>
+            <Route path={'/404'} element={<h1 style={{textAlign: 'center'}}>404: PAGE NOT FOUND</h1>}/>
+            <Route path={'*'} element={<Navigate to={'/404'}/>}/>
+          </Routes>
       </Container>
     </div>
   )

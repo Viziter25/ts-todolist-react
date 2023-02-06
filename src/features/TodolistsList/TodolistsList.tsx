@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react'
-import {AppRootStateType, useAppDispatch, useAppSelector} from '../../app/store'
+import {useAppDispatch, useAppSelector} from '../../app/store'
 import {
     addTodolistTC,
     changeTodolistFilterAC,
@@ -54,7 +54,7 @@ export const TodolistsList: React.FC = () => {
     }, [])
 
     const changeFilter = useCallback(function (value: FilterValuesType, todolistId: string) {
-        const action = changeTodolistFilterAC(todolistId, value)
+        const action = changeTodolistFilterAC({id:todolistId, filter: value})
         dispatch(action)
     }, [])
 
